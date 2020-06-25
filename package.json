@@ -18,7 +18,12 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "cloudrun:deploy": "gcloud run deploy --image asia.gcr.io/easy-cooking-281412/easy-cooking-service:first --platform managed",
+    "docker:build": "docker build -t easy-cook-service .",
+    "docker:tag": "docker tag easy-cook-service  asia.gcr.io/easy-cooking-281412/easy-cooking-service:first",
+    "docker:push": "docker push asia.gcr.io/easy-cooking-281412/easy-cooking-service:first",
+    "docker:publish": "npm run docker:build && npm run docker:tag && npm run docker:push"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
