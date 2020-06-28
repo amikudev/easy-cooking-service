@@ -1,8 +1,9 @@
-import {Body, Controller, Get, Param, Post, Req} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Req} from '@nestjs/common';
 import {Request} from "express";
 import {Recipe} from "./recipe.model";
 import {RecipeService} from "./recipe.service";
 import {CreateRecipeDto} from "./dto/create-recipe.dto";
+import {DeleteRecipeDto} from "./dto/delete-recipe.dto";
 
 @Controller('recipe')
 export class RecipeController {
@@ -23,5 +24,14 @@ export class RecipeController {
     createRecipe(@Body() recipe: CreateRecipeDto): Recipe {
         console.log(recipe);
         return this.recipeService.createRecipe(recipe);
+    }
+
+    @Delete(':id')
+    deleteRecipe(@Param('id') id): DeleteRecipeDto {
+        const status = this.recipeService.deleteRecipe(id);
+        return {
+            id,
+            requestStatus: status
+        };
     }
 }

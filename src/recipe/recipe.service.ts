@@ -29,4 +29,9 @@ export class RecipeService {
         this.recipes.push(recipeWithId);
         return recipeWithId;
     }
+
+    deleteRecipe(recipeId: string): boolean {
+        console.log(`recipe with id: ${recipeId} deleted`);
+        return true;
+    }
 }
