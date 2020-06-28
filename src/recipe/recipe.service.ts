@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {Recipe} from "./recipe.model";
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class RecipeService {
@@ -10,6 +11,10 @@ export class RecipeService {
     }
 
     createRecipe(recipe: Recipe): Recipe {
+        recipe = {
+            ...recipe,
+            id: uuidv4()
+        };
         this.recipes.push(recipe);
         return recipe;
     }

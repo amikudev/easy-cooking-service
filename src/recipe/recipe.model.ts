@@ -2,7 +2,7 @@ import {Ingredient} from '../ingredient/ingredient.model';
 
 export interface Recipe {
     id: string;
-    name: string;
+    title: string;
     description?: string;
     healthRating?: number;
     tasteRating?: number;

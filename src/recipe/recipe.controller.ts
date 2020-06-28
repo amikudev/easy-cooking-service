@@ -19,8 +19,8 @@ export class RecipeController {
     }
 
     @Post()
-    createRecipe(@Body() recipe: Recipe) {
+    createRecipe(@Body() recipe: Recipe): Recipe {
         console.log(recipe);
-        this.recipeService.createRecipe(recipe);
+        return this.recipeService.createRecipe(recipe);
     }
 }
