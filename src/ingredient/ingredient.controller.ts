@@ -1,6 +1,6 @@
 import {Body, Controller, Get, Param, Post, Req} from '@nestjs/common';
 import {Request} from 'express';
-import {Ingredient} from './ingredient.dto';
+import {Ingredient} from './ingredient.model';
 
 @Controller('ingredient')
 export class IngredientController {
