@@ -10,7 +10,7 @@ import { LoggerService } from './logger/logger.service';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/nest'),
+    // MongooseModule.forRoot('mongodb://localhost/nest'),
     RecipeModule,
     IngredientModule
   ],
