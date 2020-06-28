@@ -11,7 +11,7 @@ export class RecipeService {
         return this.recipes;
     }
 
-    getRecipe(recipeId: string): Recipe {
+    getRecipeByID(recipeId: string): Recipe {
         const filteredList: Recipe[] = this.recipes.filter(recipe => recipe.id === recipeId);
         if (filteredList.length === 1) {
             return filteredList[0];
