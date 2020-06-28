@@ -9,7 +9,8 @@ export class RecipeService {
         return this.recipes;
     }
 
-    // addTask() {
-    //
-    // }
+    createRecipe(recipe: Recipe): Recipe {
+        this.recipes.push(recipe);
+        return recipe;
+    }
 }

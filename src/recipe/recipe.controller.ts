@@ -9,18 +9,18 @@ export class RecipeController {
     }
 
     @Get()
-    getAllIngredients(@Req() request: Request): Recipe[] {
+    getAllRecipies(@Req() request: Request): Recipe[] {
         return this.recipeService.getAllRecipes();
     }
 
     @Get(':id')
-    getOneIngredient(@Param('id') id: string): string {
+    getOneRecipe(@Param('id') id: string): string {
         return `Return one Recipe with id: ${id}`;
     }
 
     @Post()
-    addIngredient(@Body() recipeDto: Recipe) {
-        console.log(recipeDto);
-        return recipeDto;
+    createRecipe(@Body() recipe: Recipe) {
+        console.log(recipe);
+        this.recipeService.createRecipe(recipe);
     }
 }
