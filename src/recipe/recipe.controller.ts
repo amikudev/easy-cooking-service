@@ -1,9 +1,10 @@
-import {Body, Controller, Delete, Get, Param, Post, Req} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Query, Req} from '@nestjs/common';
 import {Request} from "express";
 import {Recipe} from "./recipe.model";
 import {RecipeService} from "./recipe.service";
 import {CreateRecipeDto} from "./dto/create-recipe.dto";
 import {DeleteRecipeDto} from "./dto/delete-recipe.dto";
+import {GetRecipeFilterDto} from "./dto/get-recipe-filter.dto";
 
 @Controller('recipe')
 export class RecipeController {
@@ -11,8 +12,13 @@ export class RecipeController {
     }
 
     @Get()
-    getAllRecipies(@Req() request: Request): Recipe[] {
-        return this.recipeService.getAllRecipes();
+    getRecipies(@Query() filterDto: GetRecipeFilterDto): Recipe[] {
+        if(Object.keys(filterDto).length) {
+
+        } else {
+            return this.recipeService.getAllRecipes();
+        }
+
     }
 
     @Get('/:id')
