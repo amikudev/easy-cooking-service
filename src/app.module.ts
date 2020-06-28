@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { RecipeModule } from './recipe/recipe.module';
 import { IngredientModule } from './ingredient/ingredient.module';
+import { LoggerService } from './logger/logger.service';
 
 
 @Module({
@@ -14,7 +15,7 @@ import { IngredientModule } from './ingredient/ingredient.module';
     IngredientModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, LoggerService],
   exports: []
 })
 export class AppModule {}
