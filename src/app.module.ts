@@ -4,14 +4,15 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { IngredientController } from './ingredient/ingredient.controller';
-import { RecipeController } from './recipe/recipe.controller';
+import { RecipeModule } from './recipe/recipe.module';
 
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/nest')
+    MongooseModule.forRoot('mongodb://localhost/nest'),
+    RecipeModule
   ],
-  controllers: [AppController, IngredientController, RecipeController],
+  controllers: [AppController, IngredientController],
   providers: [AppService],
   exports: []
 })
