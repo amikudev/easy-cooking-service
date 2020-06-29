@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, Post, Query, Req} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Query, Req, UsePipes, ValidationPipe} from '@nestjs/common';
 import {Request} from "express";
 import {Recipe} from "./recipe.model";
 import {RecipeService} from "./recipe.service";
@@ -27,6 +27,7 @@ export class RecipeController {
     }
 
     @Post()
+    @UsePipes(ValidationPipe)
     createRecipe(@Body() recipe: CreateRecipeDto): Recipe {
         console.log(recipe);
         return this.recipeService.createRecipe(recipe);
