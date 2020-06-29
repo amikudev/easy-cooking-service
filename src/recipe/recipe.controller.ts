@@ -37,8 +37,7 @@ export class RecipeController {
     deleteRecipe(@Param('id') id): DeleteRecipeDto {
         const status = this.recipeService.deleteRecipe(id);
         return {
-            id,
-            requestStatus: status
+            id
         };
     }
 }

@@ -48,8 +48,8 @@ export class RecipeService {
         return recipeWithId;
     }
 
-    deleteRecipe(recipeId: string): boolean {
+    deleteRecipe(recipeId: string): void {
+        const recipe = this.getRecipeByID(recipeId);
         console.log(`recipe with id: ${recipeId} deleted`);
-        return true;
     }
 }
