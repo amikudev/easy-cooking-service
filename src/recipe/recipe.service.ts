@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import {Injectable, NotFoundException} from '@nestjs/common';
 import {Recipe} from "./recipe.model";
 import { v4 as uuidv4 } from 'uuid';
 import {CreateRecipeDto} from "./dto/create-recipe.dto";
@@ -35,7 +35,7 @@ export class RecipeService {
             return filteredList[0];
         }
         else {
-            return null;
+            throw new NotFoundException(`Recipe with id: "${recipeId}" not found`);
         }
     }
 
