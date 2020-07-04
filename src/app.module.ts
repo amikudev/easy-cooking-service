@@ -8,18 +8,18 @@ import { ConfigModule } from '@nestjs/config';
 import { RecipeModule } from './recipe/recipe.module';
 import { IngredientModule } from './ingredient/ingredient.module';
 import { LoggerService } from './logger/logger.service';
-import { AuthModule } from './auth/auth.module';
 
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(
-        'mongodb+srv://amit_krsna:CWmA3fttepzMd6GI@radharani-kitchen-vlknw.mongodb.net/easy-cooking?retryWrites=true&w=majority',
-        {
-          loggerLevel: 'debug',
-          useNewUrlParser: true
-        }),
+    MongooseModule.forRoot('mongodb://localhost/nest'),
+    // MongooseModule.forRoot(
+    //     'mongodb+srv://amit_krsna:CWmA3fttepzMd6GI@radharani-kitchen-vlknw.mongodb.net/easy-cooking?retryWrites=true&w=majority',
+    //     {
+    //       loggerLevel: 'debug',
+    //       useNewUrlParser: true
+    //     }),
     RecipeModule,
     IngredientModule,
     AuthModule
