@@ -1,55 +1,61 @@
+import { Model } from 'mongoose';
 import {Injectable, NotFoundException} from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+
 import {Recipe} from "./recipe.model";
+import {RecipeModel} from "./schema/recipe.schema";
 import { v4 as uuidv4 } from 'uuid';
 import {CreateRecipeDto} from "./dto/create-recipe.dto";
 import {GetRecipeFilterDto} from "./dto/get-recipe-filter.dto";
 
 @Injectable()
 export class RecipeService {
+
     private recipes: Recipe[] = [];
 
-    getAllRecipes(): Recipe[] {
-        return this.recipes;
+    constructor(@InjectModel(RecipeModel.name) private recipeModel: Model<RecipeModel>) {}
+
+    getAllRecipes(): Promise<Recipe[]> {
+        return this.recipeModel.find().exec();
     }
 
-    getRecipeWithFilters(filterDto: GetRecipeFilterDto): Recipe[] {
-        const {searchTerm, source} = filterDto;
-        let recipes = this.getAllRecipes();
+    //todo: implement this.
+    
+    // getRecipeWithFilters(filterDto: GetRecipeFilterDto): Recipe[] {
+    //     const {searchTerm, source} = filterDto;
+    //     let recipes = this.getAllRecipes();
+    //
+    //     if(searchTerm) {
+    //         recipes = recipes.filter(recipe =>
+    //             recipe.title.includes(searchTerm) ||
+    //             recipe.description.includes(searchTerm)
+    //         );
+    //     };
+    //
+    //     //filter by source
+    //     //todo
+    //
+    //     return recipes;
+    // }
 
-        if(searchTerm) {
-            recipes = recipes.filter(recipe =>
-                recipe.title.includes(searchTerm) ||
-                recipe.description.includes(searchTerm)
-            );
-        };
-
-        //filter by source
-        //todo
-        
-        return recipes;
-    }
-
-    getRecipeByID(recipeId: string): Recipe {
-        const filteredList: Recipe[] = this.recipes.filter(recipe => recipe.id === recipeId);
-        if (filteredList.length === 1) {
-            return filteredList[0];
+    async getRecipeByID(recipeId: string): Promise<Recipe> {
+        const recipe = await this.recipeModel.findById(recipeId);
+        if (recipe) {
+            return recipe;
         }
         else {
             throw new NotFoundException(`Recipe with id: "${recipeId}" not found`);
         }
     }
 
-    createRecipe(recipe: CreateRecipeDto): Recipe {
-        const recipeWithId: Recipe = {
-            ...recipe,
-            id: uuidv4()
-        };
-        this.recipes.push(recipeWithId);
-        return recipeWithId;
+    async createRecipe(recipeDto: CreateRecipeDto): Promise<Recipe> {
+        const recipe: Recipe = {...recipeDto, ingredients: []};
+
+        const createdRecipe = new this.recipeModel(recipe);
+        return createdRecipe.save();
     }
 
-    deleteRecipe(recipeId: string): void {
-        const recipe = this.getRecipeByID(recipeId);
-        console.log(`recipe with id: ${recipeId} deleted`);
+    async deleteRecipe(recipeId: string): Promise<any> {
+        return await this.recipeModel.findByIdAndDelete(recipeId).exec();
     }
 }

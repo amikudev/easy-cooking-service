@@ -11,6 +11,7 @@ import { LoggerService } from './logger/logger.service';
 @Module({
   imports: [
     // MongooseModule.forRoot('mongodb://localhost/nest'),
+    MongooseModule.forRoot('mongodb+srv://amit_krsna:CWmA3fttepzMd6GI@radharani-kitchen-vlknw.mongodb.net/easy-cooking?retryWrites=true&w=majority'),
     RecipeModule,
     IngredientModule
   ],

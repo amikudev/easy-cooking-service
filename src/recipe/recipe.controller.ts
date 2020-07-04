@@ -12,9 +12,10 @@ export class RecipeController {
     }
 
     @Get()
-    getRecipies(@Query() filterDto: GetRecipeFilterDto): Recipe[] {
+    getRecipies(@Query() filterDto: GetRecipeFilterDto): Promise<Recipe[]> {
         if(Object.keys(filterDto).length) {
-
+            //todo: correctly get filtered recipies
+            return Promise.resolve([]);
         } else {
             return this.recipeService.getAllRecipes();
         }
@@ -22,22 +23,19 @@ export class RecipeController {
     }
 
     @Get('/:id')
-    getRecipeByID(@Param('id') id: string): Recipe {
+    async getRecipeByID(@Param('id') id: string): Promise<Recipe> {
         return this.recipeService.getRecipeByID(id);
     }
 
     @Post()
     @UsePipes(ValidationPipe)
-    createRecipe(@Body() recipe: CreateRecipeDto): Recipe {
+    async createRecipe(@Body() recipe: CreateRecipeDto): Promise<Recipe> {
         console.log(recipe);
         return this.recipeService.createRecipe(recipe);
     }
 
     @Delete(':id')
-    deleteRecipe(@Param('id') id): DeleteRecipeDto {
-        const status = this.recipeService.deleteRecipe(id);
-        return {
-            id
-        };
+    deleteRecipe(@Param('id') id): Promise<any> {
+        return this.recipeService.deleteRecipe(id);
     }
 }
