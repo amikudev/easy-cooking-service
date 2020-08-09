@@ -13,16 +13,15 @@ import { LoggerService } from './logger/logger.service';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot('mongodb://localhost/nest'),
-    // MongooseModule.forRoot(
-    //     'mongodb+srv://amit_krsna:CWmA3fttepzMd6GI@radharani-kitchen-vlknw.mongodb.net/easy-cooking?retryWrites=true&w=majority',
-    //     {
-    //       loggerLevel: 'debug',
-    //       useNewUrlParser: true
-    //     }),
+    // MongooseModule.forRoot('mongodb://localhost/nest'),
+    MongooseModule.forRoot(
+        'mongodb+srv://amit_krsna:CWmA3fttepzMd6GI@radharani-kitchen-vlknw.mongodb.net/easy-cooking?retryWrites=true&w=majority',
+        {
+          loggerLevel: 'debug',
+          useNewUrlParser: true
+        }),
     RecipeModule,
-    IngredientModule,
-    AuthModule
+    IngredientModule
   ],
   controllers: [AppController],
   providers: [AppService, LoggerService],
