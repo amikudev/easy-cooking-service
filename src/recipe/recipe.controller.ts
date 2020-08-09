@@ -27,15 +27,15 @@ export class RecipeController {
         return this.recipeService.getRecipeByID(id);
     }
 
-    @Post()
-    @UsePipes(ValidationPipe)
-    async createRecipe(@Body() recipe: CreateRecipeDto): Promise<Recipe> {
-        console.log(recipe);
-        return this.recipeService.createRecipe(recipe);
-    }
-
-    @Delete(':id')
-    deleteRecipe(@Param('id') id): Promise<any> {
-        return this.recipeService.deleteRecipe(id);
-    }
+    // @Post()
+    // @UsePipes(ValidationPipe)
+    // async createRecipe(@Body() recipe: CreateRecipeDto): Promise<Recipe> {
+    //     console.log(recipe);
+    //     return this.recipeService.createRecipe(recipe);
+    // }
+    //
+    // @Delete(':id')
+    // deleteRecipe(@Param('id') id): Promise<any> {
+    //     return this.recipeService.deleteRecipe(id);
+    // }
 }
