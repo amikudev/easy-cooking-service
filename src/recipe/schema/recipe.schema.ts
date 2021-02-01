@@ -25,7 +25,7 @@ export class RecipeModel extends Document{
     targetQuantity: number;
 
     @Prop()
-    ingredients: Ingredient[]
+    ingredients: Ingredient[];
 }
 
 export const RecipeSchema = SchemaFactory.createForClass(RecipeModel);

@@ -15,12 +15,12 @@ export class RecipeService {
 
     constructor(@InjectModel(RecipeModel.name) private recipeModel: Model<RecipeModel>) {}
 
-    getAllRecipes(): Promise<Recipe[]> {
+    getAllRecipes(): Promise<RecipeModel[]> {
         return this.recipeModel.find().exec();
     }
 
     //todo: implement this.
-    
+
     // getRecipeWithFilters(filterDto: GetRecipeFilterDto): Recipe[] {
     //     const {searchTerm, source} = filterDto;
     //     let recipes = this.getAllRecipes();
@@ -38,7 +38,7 @@ export class RecipeService {
     //     return recipes;
     // }
 
-    async getRecipeByID(recipeId: string): Promise<Recipe> {
+    async getRecipeByID(recipeId: string): Promise<RecipeModel> {
         const recipe = await this.recipeModel.findById(recipeId);
         if (recipe) {
             return recipe;
@@ -48,11 +48,14 @@ export class RecipeService {
         }
     }
 
-    async createRecipe(recipeDto: CreateRecipeDto): Promise<Recipe> {
-        const recipe: Recipe = {...recipeDto, ingredients: []};
-
+    async createOrSaveRecipe(recipe: Recipe): Promise<RecipeModel> {
+        console.log('recipe', recipe);
         const createdRecipe = new this.recipeModel(recipe);
-        return createdRecipe.save();
+        if(recipe._id) {
+            return createdRecipe.updateOne(recipe);
+        } else {
+            return createdRecipe.save();
+        }
     }
 
     async deleteRecipe(recipeId: string): Promise<any> {
