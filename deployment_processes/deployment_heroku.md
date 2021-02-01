@@ -1,3 +1,3 @@
 ## Heroku deployment process
 
-https://www.joshmorony.com/deploying-a-production-nestjs-server-on-heroku/
+https://devcenter.heroku.com/articles/deploying-nodejs
