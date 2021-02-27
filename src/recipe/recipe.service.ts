@@ -7,16 +7,17 @@ import {RecipeModel} from "./schema/recipe.schema";
 import { v4 as uuidv4 } from 'uuid';
 import {CreateRecipeDto} from "./dto/create-recipe.dto";
 import {GetRecipeFilterDto} from "./dto/get-recipe-filter.dto";
+import { RecipeDal } from './recipe.dal';
 
 @Injectable()
 export class RecipeService {
 
     private recipes: Recipe[] = [];
 
-    constructor(@InjectModel(RecipeModel.name) private recipeModel: Model<RecipeModel>) {}
+    constructor(private recipeDal: RecipeDal, private recipeDal1: RecipeDal) {}
 
     getAllRecipes(): Promise<RecipeModel[]> {
-        return this.recipeModel.find().exec();
+        return this.recipeDal.getAllRecipes();
     }
 
     //todo: implement this.
@@ -38,27 +39,27 @@ export class RecipeService {
     //     return recipes;
     // }
 
-    async getRecipeByID(recipeId: string): Promise<RecipeModel> {
-        const recipe = await this.recipeModel.findById(recipeId);
-        if (recipe) {
-            return recipe;
-        }
-        else {
-            throw new NotFoundException(`Recipe with id: "${recipeId}" not found`);
-        }
-    }
+    // async getRecipeByID(recipeId: string): Promise<RecipeModel> {
+    //     const recipe = await this.recipeModel.findById(recipeId);
+    //     if (recipe) {
+    //         return recipe;
+    //     }
+    //     else {
+    //         throw new NotFoundException(`Recipe with id: "${recipeId}" not found`);
+    //     }
+    // }
 
-    async createOrSaveRecipe(recipe: Recipe): Promise<RecipeModel> {
-        console.log('recipe', recipe);
-        const createdRecipe = new this.recipeModel(recipe);
-        if(recipe._id) {
-            return createdRecipe.updateOne(recipe);
-        } else {
-            return createdRecipe.save();
-        }
-    }
-
-    async deleteRecipe(recipeId: string): Promise<any> {
-        return await this.recipeModel.findByIdAndDelete(recipeId).exec();
-    }
+    // async createOrSaveRecipe(recipe: Recipe): Promise<RecipeModel> {
+    //     console.log('recipe', recipe);
+    //     const createdRecipe = new this.recipeModel(recipe);
+    //     if(recipe._id) {
+    //         return createdRecipe.updateOne(recipe);
+    //     } else {
+    //         return createdRecipe.save();
+    //     }
+    // }
+    //
+    // async deleteRecipe(recipeId: string): Promise<any> {
+    //     return await this.recipeModel.findByIdAndDelete(recipeId).exec();
+    // }
 }
