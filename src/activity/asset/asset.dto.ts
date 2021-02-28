@@ -23,7 +23,7 @@ export class AssetDto {
     const ref = db.collection(assetCollection).doc(assetId);
     const doc = await ref.get();
     if (!doc.exists) {
-      return "Document does not exist";
+      return "This asset does not exists in the documents collection";
     } else {
       return doc.data() as AssetModel;
     }
