@@ -9,7 +9,7 @@ import { MotherActivitiesModel } from '../models/activity/MotherActivities.model
 import { ActivityService } from './activity.service';
 import { LanguageEnum } from '../models/user/language.enum';
 
-@Controller('admin/motherActivity')
+@Controller('activity')
 export class ActivityController {
   constructor(private activityService: ActivityService) {
   }

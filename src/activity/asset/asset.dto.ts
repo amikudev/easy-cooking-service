@@ -18,4 +18,14 @@ export class AssetDto {
     const result: FirebaseFirestore.WriteResult = await db.collection(assetCollection).doc(asset.uid).set(asset);
     return Promise.resolve(asset.uid);
   }
+
+  async getAsset(assetId: string, assetCollection: string): Promise<AssetModel | string> {
+    const ref = db.collection(assetCollection).doc(assetId);
+    const doc = await ref.get();
+    if (!doc.exists) {
+      return "Document does not exist";
+    } else {
+      return doc.data() as AssetModel;
+    }
+  }
 }
