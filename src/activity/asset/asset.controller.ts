@@ -1,7 +1,7 @@
 import {
   Body,
   Controller,
-  Get,
+  Get, Param,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
@@ -14,9 +14,8 @@ export class AssetController {
   constructor(private assetService: AssetService) {
   }
 
-  @Get()
-  async getAsset(): Promise<AssetModel | string> {
-    const assetId = "c8a59427-40bd-4c87-9ba8-df79263def03";
-    return this.assetService.getAsset(assetId);
+  @Get(':assetId')
+  async getAsset(@Param() params): Promise<AssetModel | string> {
+    return this.assetService.getAsset(params.assetId);
   }
 }
