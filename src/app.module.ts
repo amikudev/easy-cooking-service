@@ -8,7 +8,7 @@ import { ConfigModule } from '@nestjs/config';
 import { RecipeModule } from './recipe/recipe.module';
 import { IngredientModule } from './ingredient/ingredient.module';
 import { LoggerService } from './logger/logger.service';
-
+import { ActivityModule } from './activity/activity.module';
 
 @Module({
   imports: [
@@ -21,7 +21,8 @@ import { LoggerService } from './logger/logger.service';
           useNewUrlParser: true
         }),
     RecipeModule,
-    IngredientModule
+    IngredientModule,
+    ActivityModule
   ],
   controllers: [AppController],
   providers: [AppService, LoggerService],
