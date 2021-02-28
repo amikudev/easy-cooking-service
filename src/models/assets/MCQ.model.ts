@@ -1,5 +1,5 @@
 import { AssetTypeEnum } from "./AssetType.enum";
-import { AssetInterface } from "./Asset.interface";
+import { AssetModel } from "./Asset.model";
 
 export type AnswerCode = "A" | "B" | "C" | "D" | "E" | null | undefined;
 
@@ -8,14 +8,14 @@ export interface MCQAnswer {
   value: string;
 }
 
-export interface MCQInterface extends AssetInterface {
+export interface MCQModel extends AssetModel {
   question: string;
   options: MCQAnswer[];
   correctAnswerId: AnswerCode[]; //only 1 item will be there in the array in
   // case of single select answer.
 }
 
-const mcqQuestion: MCQInterface = {
+const mcqQuestion: MCQModel = {
   uid: null,
   assetType: AssetTypeEnum.YOUTUBE,
   comments: "123123",

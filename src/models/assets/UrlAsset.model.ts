@@ -1,7 +1,7 @@
 import { AssetTypeEnum } from "./AssetType.enum";
-import { AssetInterface } from "./Asset.interface";
+import { AssetModel } from "./Asset.model";
 
-export interface TextAssetInterface extends AssetInterface {
+export interface TextAssetInterface extends AssetModel {
   assetUrl: string;
   assetTitle: string;
   assetDescription: string;
