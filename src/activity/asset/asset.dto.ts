@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { MotherActivitiesModel } from '../../models/activity/MotherActivities.model';
+import { ActivityScreenInfo } from '../../models/activity/ActivityScreenInfo';
 import { RecipeModel } from '../../recipe/schema/recipe.schema';
 import { v4 as uuidv4 } from 'uuid';
 

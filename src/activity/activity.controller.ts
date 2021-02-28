@@ -1,22 +1,30 @@
 import {
   Body,
-  Controller,
-  Post,
+  Controller, Get,
+  Post, Query,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { MotherActivitiesModel } from '../models/activity/MotherActivities.model';
+import { ActivityScreenInfo } from '../models/activity/ActivityScreenInfo';
 import { ActivityService } from './activity.service';
 import { LanguageEnum } from '../models/user/language.enum';
+import { GetRecipeFilterDto } from '../recipe/dto/get-recipe-filter.dto';
+import { RecipeModel } from '../recipe/schema/recipe.schema';
+import { ActivitySearchDto } from '../models/dto/ActivitySearch.dto';
 
 @Controller('activity')
 export class ActivityController {
   constructor(private activityService: ActivityService) {
   }
 
+  @Get()
+  getActivity(@Query() filterDto: ActivitySearchDto): Promise<ActivityScreenInfo> {
+    return this.activityService.getActivity(filterDto);
+  }
+
   @Post()
   @UsePipes(ValidationPipe)
-  async creatOrUpdateActivity(@Body() motherActivities: MotherActivitiesModel): Promise<MotherActivitiesModel> {
+  async creatOrUpdateActivity(@Body() motherActivities: ActivityScreenInfo): Promise<ActivityScreenInfo> {
     return this.activityService.creatOrUpdateActivity(motherActivities);
   }
 }
