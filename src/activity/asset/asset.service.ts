@@ -11,10 +11,6 @@ export class AssetService {
   constructor(private assetDto: AssetDto) {
   }
 
-  getAsset(assetId: string): Promise<AssetModel | string> {
-    return this.assetDto.getAsset(assetId, getAssetsCollection(LanguageEnum.ENGLISH));
-  }
-
   async getAssets(@Query() assetLocationDto: AssetLocationDto): Promise<AssetModel[]> {
     return this.assetDto.getAssets(assetLocationDto);
   }
@@ -25,9 +21,6 @@ export class AssetService {
 
     //create new uid's for each of the new assets.
     newAssets.forEach(asset => asset.uid = uuidv4());
-
-    console.log(assets);
-    console.log(typeof assets);
 
     //append new assets at the end of older assets.
     assets = assets.concat(newAssets)
