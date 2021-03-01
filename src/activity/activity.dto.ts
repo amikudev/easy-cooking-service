@@ -3,14 +3,14 @@ import { ActivityScreenInfo } from '../models/activity/ActivityScreenInfo';
 import { v4 as uuidv4 } from 'uuid';
 
 import {db} from '../../firebase';
-import { ActivitySearchDto } from '../models/dto/ActivitySearch.dto';
+import { AssetLocationDto } from '../models/dto/AssetLocationDto';
 
 @Injectable()
 export class ActivityDto {
 
   //returns an empty array if 0 activities are found. return all entries
   // found with filter critaria
-  async getActivity(filterDto: ActivitySearchDto, collectionName: string): Promise<ActivityScreenInfo[]> {
+  async getActivity(filterDto: AssetLocationDto, collectionName: string): Promise<ActivityScreenInfo[]> {
     //todo: get the object in a filtered way.
     const docRef = db.collection(collectionName);
     const snapshot = await docRef.where('motherActivityId', '==', filterDto.motherActivityId)
@@ -36,6 +36,8 @@ export class ActivityDto {
 
     const result: FirebaseFirestore.WriteResult = await db.collection(collectionName).doc(motherActivities.uid).set(motherActivities);
     console.log(result);
+    const result1: FirebaseFirestore.WriteResult = await db.collection(collectionName).doc(motherActivities.timePeriod + "/" + motherActivities.timePeriod + "/" + motherActivities.motherActivityId).set(motherActivities);
+
     return Promise.resolve(motherActivities);
   }
 }

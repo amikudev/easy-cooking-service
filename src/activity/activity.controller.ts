@@ -10,7 +10,7 @@ import { ActivityService } from './activity.service';
 import { LanguageEnum } from '../models/user/language.enum';
 import { GetRecipeFilterDto } from '../recipe/dto/get-recipe-filter.dto';
 import { RecipeModel } from '../recipe/schema/recipe.schema';
-import { ActivitySearchDto } from '../models/dto/ActivitySearch.dto';
+import { AssetLocationDto } from '../models/dto/AssetLocationDto';
 
 @Controller('activity')
 export class ActivityController {
@@ -18,7 +18,7 @@ export class ActivityController {
   }
 
   @Get()
-  getActivity(@Query() filterDto: ActivitySearchDto): Promise<ActivityScreenInfo> {
+  getActivity(@Query() filterDto: AssetLocationDto): Promise<ActivityScreenInfo> {
     return this.activityService.getActivity(filterDto);
   }
 

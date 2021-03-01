@@ -8,7 +8,7 @@ import {
 } from '../utils/getPregnencyRegimeCollection';
 import { AssetModel } from '../models/assets/Asset.model';
 import { AssetDto } from './asset/asset.dto';
-import { ActivitySearchDto } from '../models/dto/ActivitySearch.dto';
+import { AssetLocationDto } from '../models/dto/AssetLocationDto';
 import { ActivityTypeEnum } from '../models/activity/ActivityType.enum';
 
 
@@ -18,7 +18,7 @@ export class ActivityService {
   constructor(private activityDto: ActivityDto, private assetDto: AssetDto) {
   }
 
-  async getActivity(filterDto: ActivitySearchDto): Promise<ActivityScreenInfo> {
+  async getActivity(filterDto: AssetLocationDto): Promise<ActivityScreenInfo> {
     //find the object
     const motherActivities: ActivityScreenInfo[] = await this.activityDto.getActivity(filterDto, getPregnencyRegimeCollection(this.language));
 
@@ -41,7 +41,7 @@ export class ActivityService {
 
     //do not create if another activity is present with same filter.
     if(!motherActivities.uid) {
-      const existingEntriesWithThisFilter = await this.activityDto.getActivity(new ActivitySearchDto(motherActivities.motherActivityId, motherActivities.timePeriod), getPregnencyRegimeCollection(this.language));
+      const existingEntriesWithThisFilter = await this.activityDto.getActivity(new AssetLocationDto(motherActivities.motherActivityId, motherActivities.timePeriod, ""), getPregnencyRegimeCollection(this.language));
       if(existingEntriesWithThisFilter.length > 0) {
         console.error(motherActivities);
         throw Error("Cannot create new entry with the filter critaria" +
