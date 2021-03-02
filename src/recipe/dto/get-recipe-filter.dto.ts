@@ -1,4 +1,4 @@
 export class GetRecipeFilterDto {
-    searchTerm: string;
-    source: string;
+  searchTerm: string;
+  source: string;
 }

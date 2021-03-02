@@ -1,5 +1,5 @@
-import { AssetTypeEnum } from "./AssetType.enum";
-import {IsNotEmpty, IsArray} from "class-validator";
+import { AssetTypeEnum } from './AssetType.enum';
+import { IsNotEmpty, IsArray } from 'class-validator';
 
 export class AssetModel {
   uid: string | null | undefined;

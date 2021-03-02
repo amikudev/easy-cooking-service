@@ -1,32 +1,30 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-import {Ingredient} from '../../ingredient/ingredient.model';
+import { Ingredient } from '../../ingredient/ingredient.model';
 
-@Schema({collection: 'recipe'})
-export class RecipeModel extends Document{
+@Schema({ collection: 'recipe' })
+export class RecipeModel extends Document {
+  @Prop()
+  title: string;
 
-    @Prop()
-    title: string;
+  @Prop()
+  description?: string;
 
-    @Prop()
-    description?: string;
+  @Prop()
+  healthRating?: number;
 
-    @Prop()
-    healthRating?: number;
+  @Prop()
+  tasteRating?: number;
 
-    @Prop()
-    tasteRating?: number;
+  @Prop()
+  baseQuantity: number;
 
-    @Prop()
-    baseQuantity: number;
+  @Prop()
+  targetQuantity: number;
 
-    @Prop()
-    targetQuantity: number;
-
-    @Prop()
-    ingredients: Ingredient[];
+  @Prop()
+  ingredients: Ingredient[];
 }
 
 export const RecipeSchema = SchemaFactory.createForClass(RecipeModel);
-

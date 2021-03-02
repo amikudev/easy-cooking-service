@@ -1,3 +1,3 @@
 export class DeleteRecipeDto {
-    id: string;
+  id: string;
 }

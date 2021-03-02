@@ -1,5 +1,5 @@
-import { AssetTypeEnum } from "./AssetType.enum";
-import { AssetModel } from "./Asset.model";
+import { AssetTypeEnum } from './AssetType.enum';
+import { AssetModel } from './Asset.model';
 
 export interface TextAssetInterface extends AssetModel {
   assetUrl: string;

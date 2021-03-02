@@ -1,5 +1,5 @@
 export interface Ingredient {
-    name: string;
-    quantity: number;
-    uom: string;
+  name: string;
+  quantity: number;
+  uom: string;
 }

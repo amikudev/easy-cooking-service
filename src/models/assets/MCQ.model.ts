@@ -1,7 +1,7 @@
-import { AssetTypeEnum } from "./AssetType.enum";
-import { AssetModel } from "./Asset.model";
+import { AssetTypeEnum } from './AssetType.enum';
+import { AssetModel } from './Asset.model';
 
-export type AnswerCode = "A" | "B" | "C" | "D" | "E" | null | undefined;
+export type AnswerCode = 'A' | 'B' | 'C' | 'D' | 'E' | null | undefined;
 
 export interface MCQAnswer {
   id: AnswerCode;
@@ -18,15 +18,15 @@ export interface MCQModel extends AssetModel {
 const mcqQuestion: MCQModel = {
   uid: null,
   assetType: AssetTypeEnum.YOUTUBE,
-  comments: "123123",
-  correctAnswerId: ["A"],
-  createdByUserUid: "myuid",
+  comments: '123123',
+  correctAnswerId: ['A'],
+  createdByUserUid: 'myuid',
   createTimestamp: new Date(),
   options: [
-    { id: "A", value: "1" },
-    { id: "B", value: "3" },
-    { id: "C", value: "5" },
-    { id: "D", value: "7" },
+    { id: 'A', value: '1' },
+    { id: 'B', value: '3' },
+    { id: 'C', value: '5' },
+    { id: 'D', value: '7' },
   ],
   question: "How many fingers in a man's left hand?",
   tags: [],
