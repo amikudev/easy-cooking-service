@@ -1,9 +1,9 @@
 import { Body, Injectable, Query } from '@nestjs/common';
 import { AssetDto } from './asset.dto';
-import { getAssetsCollection } from '../../utils/getPregnencyRegimeCollection';
-import { LanguageEnum } from '../../models/user/language.enum';
-import { AssetModel } from '../../models/assets/Asset.model';
-import { AssetLocationDto } from '../../models/dto/AssetLocationDto';
+import { getAssetsCollection } from '../utils/getPregnencyRegimeCollection';
+import { LanguageEnum } from '../models/user/language.enum';
+import { AssetModel } from '../models/assets/Asset.model';
+import { AssetLocationDto } from '../models/dto/AssetLocationDto';
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
@@ -15,7 +15,7 @@ export class AssetService {
     return this.assetDto.getAssets(assetLocationDto);
   }
 
-  async createAssets(@Body() newAssets: AssetModel[], @Body() assetLocationDto: AssetLocationDto): Promise<AssetModel[]> {
+  async createAssets(newAssets: AssetModel[], assetLocationDto: AssetLocationDto): Promise<AssetModel[]> {
     //fetch assets located at this location
     let assets = await this.getAssets(assetLocationDto);
 

@@ -5,9 +5,9 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { AssetModel } from '../../models/assets/Asset.model';
+import { AssetModel } from '../models/assets/Asset.model';
 import { AssetService } from './asset.service';
-import { AssetLocationDto } from '../../models/dto/AssetLocationDto';
+import { AssetLocationDto } from '../models/dto/AssetLocationDto';
 
 @Controller('asset')
 export class AssetController {
