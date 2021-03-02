@@ -24,7 +24,8 @@
     "docker:build": "docker build -t easy-cook-service .",
     "docker:tag": "docker tag easy-cook-service  asia.gcr.io/easy-cooking-281412/easy-cooking-service:first",
     "docker:push": "docker push asia.gcr.io/easy-cooking-281412/easy-cooking-service:first",
-    "docker:publish": "npm run docker:build && npm run docker:tag && npm run docker:push"
+    "docker:publish": "npm run docker:build && npm run docker:tag && npm run docker:push",
+    "prettier": "npx prettier --write ."
   },
   "dependencies": {
     "@nestjs/common": "^7.6.13",
@@ -57,7 +58,7 @@
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
     "jest": "26.0.1",
-    "prettier": "^1.19.1",
+    "prettier": "1.19.1",
     "supertest": "^4.0.2",
     "ts-jest": "26.1.0",
     "ts-loader": "^6.2.1",
