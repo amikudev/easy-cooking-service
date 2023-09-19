@@ -2,12 +2,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ConfigModule,ConfigService } from 'nestjs-config';
+import { ConfigModule } from 'nestjs-config';
 import { RecipeModule } from './recipe/recipe.module';
 import { IngredientModule } from './ingredient/ingredient.module';
 import { LoggerService } from './logger/logger.service';
-import { AssetModule } from './asset/asset.module';
-import { FirebaseAdminCoreModule } from '@tfarras/nestjs-firebase-admin';
 import * as path from 'path';
 
 @Module({
@@ -21,13 +19,12 @@ import * as path from 'path';
       },
     ),
     ConfigModule.load(path.resolve(__dirname, 'config', '**', '!(*.d).{ts,js}')),
-    FirebaseAdminCoreModule.forRootAsync({
-      useFactory: (config: ConfigService) => config.get('firebase'),
-      inject: [ConfigService],
-    }),
+    // FirebaseAdminCoreModule.forRootAsync({
+    //   useFactory: (config: ConfigService) => config.get('firebase'),
+    //   inject: [ConfigService],
+    // }),
     RecipeModule,
     IngredientModule,
-    AssetModule,
   ],
   controllers: [AppController],
   providers: [AppService, LoggerService],
