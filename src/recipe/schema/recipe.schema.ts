@@ -2,6 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 import { Ingredient } from '../../ingredient/ingredient.model';
+import {SourceModel} from "../source.model";
 
 @Schema({ collection: 'recipe' })
 export class RecipeModel extends Document {
@@ -25,6 +26,9 @@ export class RecipeModel extends Document {
 
   @Prop()
   ingredients: Ingredient[];
+
+  // @Prop()
+  // source: SourceModel;
 }
 
 export const RecipeSchema = SchemaFactory.createForClass(RecipeModel);

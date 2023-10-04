@@ -17,6 +17,8 @@ import { CreateRecipeDto } from './dto/create-recipe.dto';
 import { DeleteRecipeDto } from './dto/delete-recipe.dto';
 import { GetRecipeFilterDto } from './dto/get-recipe-filter.dto';
 import { RecipeModel } from './schema/recipe.schema';
+import CookbookRecipeModel from "./schema/CookbookRecipe.model";
+import printRecipe from "./recipePrinter";
 
 @Controller('recipe')
 export class RecipeController {
@@ -28,8 +30,27 @@ export class RecipeController {
       //todo: correctly get filtered recipies
       return Promise.resolve([]);
     } else {
-      return this.recipeService.getAllRecipes();
+      const ans =  this.recipeService.getAllRecipes();
+      ans.then(recipes => {
+        recipes.forEach(recipe => {
+          printRecipe(recipe);
+        })
+      })
+      return ans;
     }
+  }
+
+  // @ts-ignore
+  @Get('/formatted')
+  getRecipesFormatted(@Query() filterDto: GetRecipeFilterDto): any {
+    const ans: CookbookRecipeModel[] = [];
+
+    this.recipeService.getAllRecipes().then(recipes => {
+      ans.push(new CookbookRecipeModel("Sample"));
+      return Promise.resolve(ans);
+    }).catch(error => {
+      return Promise.resolve(ans);
+    })
   }
 
   @Get('/:id')

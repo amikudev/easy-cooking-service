@@ -1,6 +1,22 @@
+
 export interface SourceModel {
-  cook: string | undefined;
-  book: string | undefined;
-  page: number | undefined;
-  url: string | undefined;
+  cook: string;
+
+  book: string;
+  page: number;
+  url: string;
 }
+
+
+// import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+// import { Document } from 'mongoose';
+//
+// @Schema({ collection: 'source' })
+// export interface SourceModel extends Document {
+//   @Prop()
+//   cook: string;
+//
+//   book: string;
+//   page: number;
+//   url: string;
+// }

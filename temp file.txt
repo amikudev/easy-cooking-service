@@ -1,0 +1,38 @@
+Title: -----------------------------
+
+
+Ingredients: -----------------------------
+
+
+Url: -----------------------------
+undefined
+Full Data: -----------------------------
+{
+  ingredients: [
+    { name: 'Karela - Bitter gourd', quantity: '250', uom: 'gm' },
+    { name: 'aamchur', quantity: '.5', uom: 'tsp' },
+    { name: 'Haldi powder', quantity: '.25', uom: 'tsp' },
+    { name: 'Dhania powder', quantity: '2', uom: 'tsp' },
+    { name: 'Jeera powder', quantity: '1', uom: 'tsp' },
+    { name: 'Besan', quantity: '1', uom: 'tsp' },
+    { name: 'Grated Jaggery', quantity: '2', uom: 'tsp' },
+    { name: 'Roasted groundnut (crushed)', quantity: '2', uom: 'tsp' },
+    { name: 'Dhania leaves', quantity: '2', uom: 'TBSP' },
+    { name: 'Tempering' },
+    { name: 'Ghee', quantity: '4', uom: 'tsp' },
+    { name: 'Jeera seeds', quantity: '.5', uom: 'tsp' },
+    { name: 'Heeng', quantity: '1', uom: 'pinch' }
+  ],
+  _id: 5f827cea1ccfc68055034867,
+  title: 'Tangy Bitter Gourd - Khatta Karela',
+  source: {
+    cook: 'Jigyasa Giri, Pratibha Jain',
+    book: 'Sukham Ayu',
+    url: 'https://www.amazon.in/Sukham-Ayu-Ayurvedic-Insights-Researched/dp/8183283128/ref=sr_1_1',
+    page: '47'
+  },
+  healthRating: null,
+  tasteRating: null,
+  baseRecipe: '250 gram',
+  targetRecipe: null
+}
